@@ -1,6 +1,6 @@
 // Footer.jsx
 import React from "react";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaDiscord } from "react-icons/fa";
 import { SiReact, SiTailwindcss, SiFramer } from "react-icons/si";
 import { motion } from "framer-motion";
 
@@ -40,6 +40,12 @@ const Footer = () => {
                         className="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110"
                     >
                         <FaEnvelope size={24} />
+                    </a>
+                    <a
+                        href="https://discord.com/users/770568742304219136"
+                        className="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110"
+                    >
+                        <FaDiscord size={24} />
                     </a>
                 </div>
 

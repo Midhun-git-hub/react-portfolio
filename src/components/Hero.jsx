@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaEnvelope, FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaInstagram, FaGithub, FaLinkedin, FaDiscord } from "react-icons/fa";
 
 const Hero = () => {
     return (
@@ -80,6 +80,15 @@ const Hero = () => {
                     className="hover:text-purple-400 transition transform hover:scale-125"
                 >
                     <FaLinkedin />
+                </a>
+
+                <a
+                    href="https://discord.com/users/770568742304219136"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-purple-400 transition transform hover:scale-125"
+                >
+                    <FaDiscord />
                 </a>
             </motion.div>
 

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { Comment } from "react-loader-spinner";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,7 +6,40 @@ import { motion, AnimatePresence } from "framer-motion";
 const Contact = () => {
   const form = useRef();
   const [loading, setLoading] = useState(false);
-  const [messageStatus, setMessageStatus] = useState(null); // "success" | "error" | null
+  const [messageStatus, setMessageStatus] = useState(null);
+  const [letters, setLetters] = useState([]);
+
+  /* CODE TOKENS */
+
+  const htmlTags = ["<div>", "<section>", "<span>", "<form>", "<button>", "</div>", "</section>"];
+  const jsKeywords = ["const", "let", "function", "return", "async", "await"];
+  const reactHooks = ["useState()", "useEffect()", "useRef()"];
+  const pythonWords = ["def", "return", "import", "class"];
+  const djangoWords = ["request", "response", "views.py", "models.Model", "urlpatterns"];
+  const tailwindClasses = ["flex", "grid", "px-4", "py-2", "bg-black", "text-white", "rounded-lg"];
+  const symbols = ["{}", "[]", "</>", "=>", "()"];
+
+  const allCode = [
+    ...htmlTags,
+    ...jsKeywords,
+    ...reactHooks,
+    ...pythonWords,
+    ...djangoWords,
+    ...tailwindClasses,
+    ...symbols,
+  ];
+
+  /* OPTIONAL COLORS */
+
+  const colors = [
+    "text-indigo-400/50",
+    "text-purple-400/50",
+    "text-blue-400/50",
+  ];
+
+  const sizes = ["text-xs", "text-sm", "text-base"];
+
+  /* EMAIL SEND */
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -36,6 +69,29 @@ const Contact = () => {
       );
   };
 
+  /* CODE RAIN */
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newLetter = {
+        id: Math.random(),
+        char: allCode[Math.floor(Math.random() * allCode.length)],
+        left: Math.random() * 100,
+        duration: 4 + Math.random() * 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        size: sizes[Math.floor(Math.random() * sizes.length)],
+      };
+
+      setLetters((prev) => [...prev, newLetter]);
+
+      setTimeout(() => {
+        setLetters((prev) => prev.slice(1));
+      }, 7000);
+    }, 220);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="contact"
@@ -52,6 +108,24 @@ const Contact = () => {
             onSubmit={sendEmail}
             className="space-y-6 bg-linear-to-br from-slate-900 to-slate-800 p-8 rounded-2xl border border-white/10 relative overflow-hidden"
           >
+
+            {/* CODE RAIN INSIDE FORM */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+              {letters.map((letter) => (
+                <span
+                  key={letter.id}
+                  className={`absolute ${letter.color} font-mono whitespace-nowrap animate-fall`}
+                  style={{
+                    left: `${letter.left}%`,
+                    top: "-40px",
+                    animationDuration: `${letter.duration}s`,
+                  }}
+                >
+                  {letter.char}
+                </span>
+              ))}
+            </div>
+
             {/* Loader overlay */}
             <AnimatePresence>
               {loading && (
@@ -92,71 +166,92 @@ const Contact = () => {
               )}
             </AnimatePresence>
 
-            {/* Form Fields */}
-            <div className="grid md:grid-cols-2 gap-6">
+            {/* FORM CONTENT */}
+            <div className="relative z-10 space-y-6">
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <input
+                  type="text"
+                  name="user_name"
+                  placeholder="Your Name"
+                  required
+                  className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-400"
+                />
+                <input
+                  type="email"
+                  name="user_email"
+                  placeholder="Your Email"
+                  required
+                  className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-400"
+                />
+              </div>
+
               <input
                 type="text"
-                name="user_name"
-                placeholder="Your Name"
+                name="subject"
+                placeholder="Subject"
                 required
                 className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-400"
               />
-              <input
-                type="email"
-                name="user_email"
-                placeholder="Your Email"
+
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Write your message here..."
                 required
-                className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-400"
-              />
-            </div>
+                className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-400 resize-none"
+              ></textarea>
 
-            <input
-              type="text"
-              name="subject"
-              placeholder="Subject"
-              required
-              className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-400"
-            />
+              <div className="text-center">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3 rounded-lg bg-linear-to-r from-purple-500 to-indigo-600 hover:shadow-lg hover:shadow-purple-500/40 transition"
+                >
+                  Send Message
+                </motion.button>
 
-            <textarea
-              name="message"
-              rows="5"
-              placeholder="Write your message here..."
-              required
-              className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-400 resize-none"
-            ></textarea>
+                <br />
+                <br />
 
-            {/* Button + Reply Note */}
-            <div className="text-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 rounded-lg bg-linear-to-r from-purple-500 to-indigo-600 hover:shadow-lg hover:shadow-purple-500/40 transition relative z-10"
-              >
-                Send Message
-              </motion.button>
+                <AnimatePresence>
+                  {messageStatus === "success" && (
+                    <motion.p
+                      className="mt-2 text-sm text-gray-400 text-center"
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                    >
+                      I’ll reply within 24 hours 💌
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </div>
 
-              <br />
-              <br />
-
-              {/* Reply time note */}
-              <AnimatePresence>
-                {messageStatus === "success" && (
-                  <motion.p
-                    className="mt-2 text-sm text-gray-400 text-center"
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -5 }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    I’ll reply within 24 hours 💌
-                  </motion.p>
-                )}
-              </AnimatePresence>
             </div>
           </form>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fall {
+          0% {
+            transform: translateY(-40px);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(600px);
+            opacity: 0;
+          }
+        }
+
+        .animate-fall {
+          animation: fall linear forwards;
+        }
+      `}</style>
     </section>
   );
 };
