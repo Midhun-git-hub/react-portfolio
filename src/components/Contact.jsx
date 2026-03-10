@@ -11,23 +11,27 @@ const Contact = () => {
 
   /* CODE TOKENS */
 
-  const htmlTags = ["<div>", "<section>", "<span>", "<form>", "<button>", "</div>", "</section>"];
-  const jsKeywords = ["const", "let", "function", "return", "async", "await"];
-  const reactHooks = ["useState()", "useEffect()", "useRef()"];
-  const pythonWords = ["def", "return", "import", "class"];
-  const djangoWords = ["request", "response", "views.py", "models.Model", "urlpatterns"];
-  const tailwindClasses = ["flex", "grid", "px-4", "py-2", "bg-black", "text-white", "rounded-lg"];
-  const symbols = ["{}", "[]", "</>", "=>", "()"];
+  const htmlTags = ["<div>", "<section>", "<span>", "<form>", "<button>", "</div>", "</section>", "</span>", "</form>", "</button>", "<input>", "<textarea>", "<h1>", "<h2>", "<h3>",];
+  const jsKeywords = ["const", "let", "function", "return", "async", "await", "import", "from", "class", "if", "else", "for", "while", "try", "catch", "finally", "switch", "case", "default", "break", "continue", "return", "throw", "debugger"];
+  const reactHooks = ["useState()","useEffect()","useRef()","useContext()","useNavigate()","useParams()","useLocation()"];
+  const pythonWords = ["def", "return", "import", "class", "try", "except", "finally", "for", "while", "if", "else", "elif"];
+  const djangoWords = ["request", "response", "views.py", "models.Model", "urlpatterns", "path()", "include()", "render()", "redirect()", "HttpResponse()", "HttpResponseRedirect()"];
+  const tailwindClasses = ["flex", "grid", "px-4", "py-2", "bg-black", "text-white", "rounded-lg", "hover:bg-white", "hover:text-black", "transition", "duration-300", "ease-in-out"];
+  const symbols = ["{}", "[]", "</>", "=>", "()", ";", ":", ".", ",", "+", "-", "*", "/", "&&", "||", "!", "?", "<", ">", "=", "==", "===", "!==", ">", ">=", "<", "<=", "!==",];
+  const devTools = ["Git","GitHub","npm","vite","vercel","render","postman","vscode"];
+  const techWords = ["API","JSON","REST","JWT","async/await","props","state","hooks","components","context","middleware","ORM","MVC","CRUD","responsive design","mobile-first","cross-browser compatibility","accessibility","performance","security","testing","debugging","debugging","deployment",];
 
   const allCode = [
-    ...htmlTags,
-    ...jsKeywords,
-    ...reactHooks,
-    ...pythonWords,
-    ...djangoWords,
-    ...tailwindClasses,
-    ...symbols,
-  ];
+  ...htmlTags,
+  ...jsKeywords,
+  ...reactHooks,
+  ...pythonWords,
+  ...djangoWords,
+  ...tailwindClasses,
+  ...techWords,
+  ...devTools,
+  ...symbols,
+];
 
   /* OPTIONAL COLORS */
 
@@ -77,7 +81,7 @@ const Contact = () => {
         id: Math.random(),
         char: allCode[Math.floor(Math.random() * allCode.length)],
         left: Math.random() * 100,
-        duration: 4 + Math.random() * 3,
+        duration: Math.random() < 0.1 ? 0.6 : Math.random() < 0.3 ? 1.5 : 4 + Math.random() * 3,
         color: colors[Math.floor(Math.random() * colors.length)],
         size: sizes[Math.floor(Math.random() * sizes.length)],
       };
@@ -114,7 +118,7 @@ const Contact = () => {
               {letters.map((letter) => (
                 <span
                   key={letter.id}
-                  className={`absolute ${letter.color} font-mono whitespace-nowrap animate-fall`}
+                  className={`absolute ${letter.color} ${letter.size} font-mono whitespace-nowrap animate-fall`}
                   style={{
                     left: `${letter.left}%`,
                     top: "-40px",

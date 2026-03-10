@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 
 const About = () => {
@@ -30,7 +31,7 @@ const About = () => {
                     I am a <span className="text-purple-400 font-medium">Python Fullstack Developer </span>
                     with experience in building web applications using{" "}
                     <span className="text-indigo-400">
-                        HTML5, CSS3, JavaScript, Bootstrap, Tailwind CSS, React and Django ,Django Rest Framework
+                        HTML5, CSS3, JavaScript, Bootstrap, Tailwind CSS, React, Django, and Django REST Framework
                     </span>.
                     I work on both backend logic and frontend design, integrating databases,
                     APIs, and interactive features to deliver seamless user experiences.

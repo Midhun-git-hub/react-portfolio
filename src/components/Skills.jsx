@@ -1,103 +1,169 @@
+import React from "react";
 import { motion } from "framer-motion";
-import {
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiBootstrap,
-  SiReact,
-  SiTailwindcss,
-  SiPython,
-  SiDjango,
-  SiPostgresql,
-  SiMysql,
-  SiSqlite,
-} from "react-icons/si";
+import { FaNpm } from "react-icons/fa";
+import { SiHtml5,SiCss3,SiJavascript,SiBootstrap,SiReact,SiTailwindcss,SiPython,SiDjango,SiPostgresql,SiMysql,SiSqlite,SiRedis,SiCelery,SiReactrouter,SiFramer,SiRender,SiVercel,SiAntdesign,} from "react-icons/si";
+
+const skills = {
+  Frontend: [
+    { icon: <SiHtml5 className="text-orange-500" />, name: "HTML5" },
+    { icon: <SiCss3 className="text-blue-500" />, name: "CSS3" },
+    { icon: <SiJavascript className="text-yellow-400" />, name: "JavaScript" },
+    { icon: <SiBootstrap className="text-purple-500" />, name: "Bootstrap" },
+    { icon: <SiReact className="text-cyan-400" />, name: "React" },
+    { icon: <SiTailwindcss className="text-sky-400" />, name: "Tailwind CSS" },
+  ],
+
+  Backend: [
+    { icon: <SiPython className="text-yellow-300" />, name: "Python" },
+    { icon: <SiDjango className="text-green-500" />, name: "Django" },
+    { icon: <SiDjango className="text-emerald-400" />, name: "Django REST" },
+  ],
+
+  Database: [
+    { icon: <SiMysql className="text-blue-400" />, name: "MySQL" },
+    { icon: <SiPostgresql className="text-indigo-400" />, name: "PostgreSQL" },
+    { icon: <SiSqlite className="text-gray-400" />, name: "SQLite" },
+  ],
+};
+
+const exploring = [
+  { icon: <SiCelery className="text-green-400" />, name: "Celery" },
+  { icon: <SiRedis className="text-red-400" />, name: "Redis" },
+  { icon: <SiReactrouter className="text-orange-400" />, name: "React Router" },
+  { icon: <SiFramer className="text-purple-400" />, name: "Framer Motion" },
+  { icon: <SiAntdesign className="text-blue-400" />, name: "Ant Design" },
+  { icon: <FaNpm className="text-red-500" />, name: "NPM" },
+  { icon: <SiRender className="text-gray-300" />, name: "Render" },
+  { icon: <SiVercel className="text-white" />, name: "Vercel" },
+];
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  show: { opacity: 1, y: 0 },
+};
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
 
 const Skills = () => {
   return (
     <section
       id="skills"
-      className="min-h-screen bg-black text-white flex items-center py-24 px-6"
+      className="min-h-screen bg-black text-white py-24 px-6"
     >
-      <div className="max-w-6xl mx-auto w-full text-center">
-        <h1 className="text-4xl font-semibold mb-16 bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
-          Skill Set
-        </h1>
+      <div className="max-w-6xl mx-auto">
 
-        <div className="grid md:grid-cols-3 gap-10">
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <h1 className="text-4xl md:text-5xl font-semibold bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
+            Skills
+          </h1>
 
-          {/* Frontend */}
-          <SkillCard title="Front-End">
-            <Skill icon={<SiHtml5 className="text-orange-500" />} name="HTML5" />
-            <Skill icon={<SiCss3 className="text-blue-500" />} name="CSS3" />
-            <Skill icon={<SiJavascript className="text-yellow-400" />} name="JavaScript" />
-            <Skill icon={<SiBootstrap className="text-purple-500" />} name="Bootstrap" />
-            <Skill icon={<SiReact className="text-cyan-400" />} name="React.js" />
-            <Skill icon={<SiTailwindcss className="text-sky-400" />} name="Tailwind CSS" />
-          </SkillCard>
-
-          {/* Backend */}
-          <SkillCard title="Back-End">
-            <Skill icon={<SiPython className="text-yellow-300" />} name="Python" />
-            <Skill icon={<SiDjango className="text-green-500" />} name="Django" />
-            <Skill icon={<SiDjango className="text-emerald-400" />} name="Django REST Framework" />
-          </SkillCard>
-
-          {/* Database */}
-          <SkillCard title="Database">
-            <Skill icon={<SiMysql className="text-blue-400" />} name="MySQL" />
-            <Skill icon={<SiPostgresql className="text-indigo-400" />} name="PostgreSQL" />
-            <Skill icon={<SiSqlite className="text-gray-400" />} name="SQLite" />
-          </SkillCard>
-
+          <p className="text-neutral-400 mt-4 max-w-xl mx-auto">
+            Technologies I use to build modern full-stack web applications.
+          </p>
         </div>
+
+        {/* Skill Categories */}
+        {Object.entries(skills).map(([category, items], index) => (
+          <motion.div
+            key={category}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="show"
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className="mb-14 text-center"
+          >
+            <h2 className="text-lg font-semibold mb-6 bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
+              {category}
+            </h2>
+
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="flex flex-wrap gap-4 justify-center"
+            >
+              {items.map((skill, i) => (
+                <motion.div
+                  key={i}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="
+                  flex items-center gap-2 px-4 py-2
+                  bg-gradient-to-br from-slate-900 to-slate-800
+                  border border-white/10 rounded-lg
+                  hover:border-purple-400/50
+                  hover:shadow-lg hover:shadow-purple-500/20
+                  transition-all duration-300
+                  "
+                >
+                  <span className="text-lg">{skill.icon}</span>
+                  <span className="text-sm text-gray-300">{skill.name}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        ))}
+
+        {/* Currently Exploring Section */}
+        <motion.div
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="show"
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <h2 className="text-lg font-semibold mb-6 bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
+            Currently Exploring
+          </h2>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="flex flex-wrap gap-4 justify-center"
+          >
+            {exploring.map((skill, i) => (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                whileHover={{ scale: 1.08 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="
+                flex items-center gap-2 px-4 py-2
+                bg-gradient-to-br from-slate-900 to-slate-800
+                border border-purple-500/30 rounded-lg
+                hover:border-purple-400
+                hover:shadow-lg hover:shadow-purple-500/20
+                transition-all duration-300
+                "
+              >
+                <span className="text-lg">{skill.icon}</span>
+                <span className="text-sm text-gray-300">{skill.name}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+
       </div>
     </section>
-  );
-};
-
-const SkillCard = ({ title, children }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      viewport={{ once: true }}
-      className="bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-2xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/30"
-    >
-      <h3 className="text-xl font-semibold mb-6 text-purple-400">{title}</h3>
-      <div className="space-y-4 text-left">{children}</div>
-    </motion.div>
-  );
-};
-
-const Skill = ({ icon, name }) => {
-  return (
-    <motion.div
-      className="flex items-center gap-3 cursor-pointer group"
-      initial="rest"
-      whileHover="hover"
-    >
-      {/* Icon reacts when the row (group) is hovered */}
-      <motion.div
-        className="text-2xl"
-        variants={{
-          rest: { rotateY: 0, filter: "drop-shadow(0 0 0px rgba(168,85,247,0))" },
-          hover: { rotateY: 360, filter: "drop-shadow(0 0 12px rgba(168,85,247,0.8))" },
-        }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {icon}
-      </motion.div>
-
-      {/* Text triggers the icon hover via group-hover */}
-      <motion.span
-        className="text-gray-300 group-hover:text-white transition-colors duration-300"
-      >
-        {name}
-      </motion.span>
-    </motion.div>
   );
 };
 

@@ -1,3 +1,5 @@
+import React from "react";
+import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaInstagram, FaGithub, FaLinkedin, FaDiscord } from "react-icons/fa";
 
@@ -27,7 +29,22 @@ const Hero = () => {
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className="text-lg md:text-xl text-neutral-300 mb-4"
             >
-                Aspiring Python Fullstack Developer | Backend & Frontend Enthusiast
+                <Typewriter
+                    words={[
+                        "Python Fullstack Developer",
+                        "React Developer",
+                        "Django Backend Developer",
+                        "Problem Solver",
+                        "Tech Enthusiast",
+                        "Always learning. Always building."
+                    ]}
+                    loop={true}
+                    cursor
+                    cursorStyle="|"
+                    typeSpeed={70}
+                    deleteSpeed={40}
+                    delaySpeed={1500}
+                />
             </motion.h3>
 
             {/* Description */}
@@ -50,7 +67,7 @@ const Hero = () => {
             >
                 <a
                     href="mailto:m20787549@gmail.com?subject=Portfolio Contact"
-                    className="hover:text-purple-400 transition transform hover:scale-125"
+                    className="hover:text-purple-400 transition transform hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]"
                 >
                     <FaEnvelope />
                 </a>
@@ -59,7 +76,7 @@ const Hero = () => {
                     href="https://www.instagram.com/_midhun_codes_/"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-purple-400 transition transform hover:scale-125"
+                    className="hover:text-purple-400 transition transform hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]"
                 >
                     <FaInstagram />
                 </a>
@@ -68,7 +85,7 @@ const Hero = () => {
                     href="https://github.com/Midhun-git-hub"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-purple-400 transition transform hover:scale-125"
+                    className="hover:text-purple-400 transition transform hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]"
                 >
                     <FaGithub />
                 </a>
@@ -77,7 +94,7 @@ const Hero = () => {
                     href="https://linkedin.com/in/midhun-m-683126298"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-purple-400 transition transform hover:scale-125"
+                    className="hover:text-purple-400 transition transform hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]"
                 >
                     <FaLinkedin />
                 </a>
@@ -86,7 +103,7 @@ const Hero = () => {
                     href="https://discord.com/users/770568742304219136"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-purple-400 transition transform hover:scale-125"
+                    className="hover:text-purple-400 transition transform hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]"
                 >
                     <FaDiscord />
                 </a>
