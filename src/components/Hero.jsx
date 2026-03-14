@@ -117,7 +117,7 @@ const Hero = () => {
                 className="mt-10"
             >
                 <a
-                    href="https://drive.google.com/file/d/1urXr954NKyzzEEAEW2DjpYN_7ZYpm5qK/view?usp=drive_link"
+                    href="https://drive.google.com/file/d/14jWiuITwbJU9mhxnq4UvIXN1U9ieg0KV/view?usp=sharing"
                     target="_blank"
                     rel="noreferrer"
                 >
