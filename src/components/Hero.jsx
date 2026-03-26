@@ -1,6 +1,6 @@
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; //eslint-disable-line
 import { FaEnvelope, FaInstagram, FaGithub, FaLinkedin, FaDiscord } from "react-icons/fa";
 import DotGrid from './DotGrid';
 

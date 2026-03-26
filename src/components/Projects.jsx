@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; //eslint-disable-line
 
 const projects = [
   {
@@ -51,6 +51,13 @@ const projects = [
     github: "https://github.com/Midhun-git-hub/netflix-clone-using-react",
     live: "https://netflix-clone-using-react-tau.vercel.app/",
   },
+  {
+    title: "React Experiment Lab",
+    desc: "A sandbox for experimenting with various React features and libraries.",
+    tech: ["React", "JavaScript", "CSS", "Tailwind CSS", "Various React Libraries"],
+    github: "https://github.com/Midhun-git-hub/React-Research-lab",
+    live: "https://react-research-lab.vercel.app/",
+  }
 ];
 
 const Projects = () => {

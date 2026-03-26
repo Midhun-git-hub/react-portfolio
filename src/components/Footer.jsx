@@ -2,7 +2,7 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope, FaDiscord } from "react-icons/fa";
 import { SiReact, SiTailwindcss, SiFramer } from "react-icons/si";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; //eslint-disable-line
 
 const Footer = () => {
     return (
