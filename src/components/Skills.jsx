@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
 import { FaNpm } from "react-icons/fa";
 import { SiHtml5,SiCss3,SiJavascript,SiBootstrap,SiReact,SiTailwindcss,SiPython,SiDjango,SiPostgresql,SiMysql,SiSqlite,SiRedis,SiCelery,SiReactrouter,SiFramer,SiRender,SiVercel,SiAntdesign,} from "react-icons/si";
 
@@ -27,14 +27,10 @@ const skills = {
 };
 
 const exploring = [
-  { icon: <SiCelery className="text-green-400" />, name: "Celery" },
-  { icon: <SiRedis className="text-red-400" />, name: "Redis" },
+  { icon: <SiReact className="text-cyan-400" />, name: "React" },
   { icon: <SiReactrouter className="text-orange-400" />, name: "React Router" },
   { icon: <SiFramer className="text-purple-400" />, name: "Framer Motion" },
-  { icon: <SiAntdesign className="text-blue-400" />, name: "Ant Design" },
   { icon: <FaNpm className="text-red-500" />, name: "NPM" },
-  { icon: <SiRender className="text-gray-300" />, name: "Render" },
-  { icon: <SiVercel className="text-white" />, name: "Vercel" },
 ];
 
 const containerVariants = {
